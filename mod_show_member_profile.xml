@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5"
+	client="site"
+	method="upgrade">
+	<name>Show Member Profile</name>
+	<author>Joseph P. Gibson</author>
+	<creationDate>March 2015</creationDate>
+	<copyright>Copyright (C) 2015 Joseph P. Gibson. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>jgibson@usps.org</authorEmail>
+	<version>1.0</version>
+	<authorUrl>www.joesboat.org</authorUrl>
+	<description>Module - mod_show_member_profile. Displays identify of Logged In User.  Functional for members who have logged in using a usps certificate and pin.  Obtains data on member from VHQAB.mbftp table.   </description>
+	<files>
+		<filename module="mod_show_member_profile">mod_show_member_profile.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>		
+		<filename>mod_show_member_profile.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+			<fieldset name="debug" label="Debug Controls">
+                <field 	name="siteLog" 
+                		type="text" 
+                		size="1" 
+                		label="Activate Logging" 
+                		description="Set to 1(true) to activate logging in template routines."/>
+			</fieldset>
+			<fieldset name="roster" label="Roster Controls">
+				<field 	name="show_profile" 
+						type="folderlist" 
+						default="" 
+						label="Select the Module to show a member's profile" 
+						directory="modules"
+						filter="" 
+						exclude="" 
+						stripext="" 
+				/>
+				<field name="types" type="contenttype"
+						label="COM_TAGS_FIELD_TYPE_LABEL"
+						description="COM_TAGS_FIELD_TYPE_DESC"	
+						multiple="false" 
+				/>
+				<field name="mycategory" 
+						type="category" extension="com_users" label="Select a category" description="" />
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					default="single_line"    />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>
